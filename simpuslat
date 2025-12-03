@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard — PUSLAT KODIKLATAU</title>
+
+<style>
+:root{--bg:#000;--accent:#00ff00;--muted:#9aa0a6;--glass: rgba(255,255,255,0.03);}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,sans-serif;background:linear-gradient(180deg,#000,#050505);color:#00ff00}
+.wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:40px}
+.card{width:100%;max-width:900px;background:var(--glass);border:1px solid rgba(255,255,255,0.05);border-radius:14px;padding:26px;box-shadow:0 6px 30px rgba(0,0,0,0.6)}
+header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.logo{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#0d0d0d;border:1px solid rgba(255,255,255,0.05)}
+.logo b{color:var(--accent);font-size:20px}
+h1{margin:0;font-size:20px}
+
+/* RUNNING TEXT */
+.running-text{width:100%;overflow:hidden;white-space:nowrap;border-bottom:1px solid rgba(255,0,0,0.3);margin-bottom:14px;padding:6px 0}
+.running-text span{display:inline-block;padding-left:100%;color:#ff3333;font-weight:700;animation:marquee 12s linear infinite;letter-spacing:1px}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+
+/* Konten */
+.box{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:20px;border-radius:12px}
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+
+.menu{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr; /* 3 kolom */
+  gap:16px;
+}
+/* Tombol menu sebagai link */
+.menu a{
+  padding:14px;
+  border-radius:10px;
+  text-align:center;
+  font-weight:600;
+  cursor:pointer;
+  background:rgba(0,0,0,0.2);
+  border:1px solid rgba(255,255,255,0.06);
+  color:#00ff00;
+  text-decoration:none;
+  transition:.2s;
+}
+.menu a:hover{
+  background:rgba(0,255,0,0.12);
+  transform:translateY(-3px);
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="card">
+
+    <div class="running-text">
+      <span>WELCOME TO THE INFORMATION SYSTEM PUSLAT KODIKLATAU</span>
+    </div>
+
+    <header>
+      <div class="logo"><b>UP</b></div>
+      <div>
+        <h2 style="color:#00ff00; margin:4px 0 0 0; font-weight:600;">DASBOARD INFORMATION SYSTEMS</h2>
+        <h1>PUSLAT KODIKLATAU</h1>        
+        <p style="font-size:12px;color:#00ff00">publik</p>
+      </div>
+    </header>
+
+    <div class="box">
+      <h3 style="margin-top:0;color:#00ff00">Main course</h3>
+      <p style="color:var(--muted);margin-bottom:20px">Please select one of the menus below to continue.</p>
+
+      <div class="menu">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdZsDf161xZ9J_fxed250Y5QYW78Dv2hUDR6Dryp5gVvN0tOA/viewform?usp=sharing&ouid=112891597407539621004">formulir pemuktahiran DATA</a>        
+        <a href="Coming soon (2).mp4">monitoring UKP</a>        
+        <a href="Coming soon (2).mp4">monitoring KGB</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdQ4Pplg-BZXrIgDPO_PjvT4pLjH78laGhESI7kTyINr3vyCA/viewform?usp=sharing&ouid=112891597407539621004">formulir riwayat HIDUP</a>        
+        <a href="Coming soon (2).mp4">MONITORING PENDIDIKAN</a>
+        <a href="Coming soon (2).mp4">formulir CUTI</a>
+        <a href="Coming soon (2).mp4">formulir KU-1</a>    
+        <a href="Coming soon (2).mp4">MONITORING PENDIDIKAN</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+<audio id="bgm" src="Helloween-Forever-And-One-Neverland.aac" autoplay loop hidden></audio>
+
+<script>
+document.addEventListener("click", function() {
+  const bgm = document.getElementById("bgm");
+  if (bgm.paused) bgm.play();
+}, { once:true });
+</script>
+<script>
+function openFullscreen() {
+  const elem = document.documentElement;
+
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { // Safari / iPad
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { // Windows tablet
+    elem.msRequestFullscreen();
+  }
+}
+
+document.addEventListener("click", function() {
+  openFullscreen();
+}, { once:true });
+</script>
+<script>
+// Fullscreen untuk Android WebView / PWA
+function forceFullscreen() {
+  const elem = document.documentElement;
+
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen().catch(()=>{});
+  } else if (elem.webkitRequestFullscreen) {
+    elem.webkitRequestFullscreen();
+  }
+}
+
+// Deteksi jika dijalankan sebagai PWA atau WebView
+function isStandalone() {
+  return (window.matchMedia('(display-mode: standalone)').matches || 
+          window.navigator.standalone === true);
+}
+
+// Jika PWA → langsung fullscreen
+if (isStandalone()) {
+  setTimeout(forceFullscreen, 500);
+}
+
+// Jika Android WebView → auto fullscreen
+if (navigator.userAgent.includes("wv") || navigator.userAgent.includes("Android")) {
+  setTimeout(forceFullscreen, 800);
+}
+
+// Browser biasa tetap butuh klik pertama
+document.addEventListener("click", function() {
+  forceFullscreen();
+}, { once: true });
+</script>
+
+</body>
+</html>
