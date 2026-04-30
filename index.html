@@ -78,7 +78,7 @@ h1{margin:0;font-size:20px}
       <div>
         <h2 style="color:#00ff00; margin:4px 0 0 0; font-weight:600;">DASBOARD INTEGRATED SYSTEM</h2>
         <h1>PUSLAT KODIKLATAU</h1>        
-        <p style="font-size:12px;color:#00ff00">
+        <p style="font-size:12px;color:#ff0000">
         code : <span class="code-private" id="tanggal"></span>
         </p>
       </div>
@@ -177,6 +177,26 @@ document.addEventListener("click", function() {
   forceFullscreen();
 }, { once: true });
 </script>
+<script>
+function tampilkanTanggal() {
+  const now = new Date();
 
+  const hari = String(now.getDate()).padStart(2, '0');
+  const bulan = String(now.getMonth() + 1).padStart(2, '0');
+  const tahun = now.getFullYear();
+
+  const jam = String(now.getHours()).padStart(2, '0');
+  const menit = String(now.getMinutes()).padStart(2, '0');
+  const detik = String(now.getSeconds()).padStart(2, '0');
+
+  const format = `${hari}-${bulan}-${tahun} ${jam}:${menit}:${detik}`;
+
+  document.getElementById("tanggal").textContent = format;
+}
+
+// update tiap detik biar live
+setInterval(tampilkanTanggal, 1000);
+tampilkanTanggal();
+</script>
 </body>
 </html>
