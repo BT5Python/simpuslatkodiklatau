@@ -86,7 +86,11 @@ h1{margin:0;font-size:20px}
   </div>
 </div>
 <audio id="bgm" src="Helloween-Forever-And-One-Neverland.aac" autoplay loop hidden></audio>
-
+<script>
+if (sessionStorage.getItem("isLogin") !== "true") {
+  window.location.href = "index.html";
+}
+</script>
 <script>
 document.addEventListener("click", function() {
   const bgm = document.getElementById("bgm");
